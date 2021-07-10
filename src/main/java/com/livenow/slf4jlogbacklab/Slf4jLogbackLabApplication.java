@@ -9,5 +9,4 @@ public class Slf4jLogbackLabApplication {
     public static void main(String[] args) {
         SpringApplication.run(Slf4jLogbackLabApplication.class, args);
     }
-
 }
