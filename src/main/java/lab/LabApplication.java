@@ -5,17 +5,14 @@ import org.slf4j.LoggerFactory;
 
 public class LabApplication {
     public static void main(String[] args) {
-        for (int count = 1; count <= 10; count++) {
-            System.out.println("로깅 재밌어 " + count);
-        }
-
         Logger logger = LoggerFactory.getLogger(LabApplication.class);
-        for (int count = 1; count <= 10; count++) {
-            logger.info("SLF4J-API를 사용하는 로깅 재밌어 {}", count);
-        }
 
         for (int count = 1; count <= 10; count++) {
-            logger.info("SLF4J-API와 Logback 로깅 재밌어 {}", count);
+            logger.trace("trace 로깅이야!!! {}", count);
+            logger.debug("debug 로깅이야!!! {}", count);
+            logger.info("info 로깅이야!!! {}", count);
+            logger.warn("warn 로깅이야!!! {}", count);
+            logger.error("error 로깅이야!!! {}", count);
         }
     }
 }
