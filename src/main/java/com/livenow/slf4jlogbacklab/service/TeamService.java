@@ -1,5 +1,6 @@
 package com.livenow.slf4jlogbacklab.service;
 
+import com.livenow.slf4jlogbacklab.common.NotFoundException;
 import com.livenow.slf4jlogbacklab.domain.Member;
 import com.livenow.slf4jlogbacklab.domain.MemberRepository;
 import com.livenow.slf4jlogbacklab.domain.Team;
@@ -40,9 +41,9 @@ public class TeamService {
     private Member findMember(String memberName) {
         Optional<Member> member = memberRepository.findByName(memberName);
         if (member.isEmpty()) {
-            String detailMessage = String.format("존재하지 않는 직원입니다. 입력값: %s", memberName);
+            String detailMessage = String.format("NotFoundException: Cannot find Member by input value, Input: %s", memberName);
             logger.info(detailMessage);
-            throw new IllegalArgumentException(detailMessage);
+            throw new NotFoundException(detailMessage);
         }
         return member.get();
     }
@@ -50,9 +51,9 @@ public class TeamService {
     private Team findTeam(String teamName) {
         Optional<Team> team = teamRepository.findByName(teamName);
         if (team.isEmpty()) {
-            String detailMessage = String.format("존재하지 않는 팀입니다. 입력값: %s", teamName);
+            String detailMessage = String.format("NotFoundException: Cannot find Team by input value. Input: %s", teamName);
             logger.info(detailMessage);
-            throw new IllegalArgumentException(detailMessage);
+            throw new NotFoundException(detailMessage);
         }
         return team.get();
     }

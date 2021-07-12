@@ -1,5 +1,6 @@
 package com.livenow.slf4jlogbacklab;
 
+import com.livenow.slf4jlogbacklab.common.CommonException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,13 @@ public class Slf4jRestControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String illegalArgumentException(IllegalArgumentException exception) {
         logger.error("IllegalArgumentException: {}", exception.getMessage());
+        return exception.getMessage();
+    }
+
+    @ExceptionHandler(CommonException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String notFoundException(CommonException exception) {
+        logger.error("CommonException: {}", exception.getMessage());
         return exception.getMessage();
     }
 }
