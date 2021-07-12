@@ -18,19 +18,10 @@
         <include resource="file-warn-appender.xml"/>
         <include resource="file-error-appender.xml"/>
 
-
         <root level="INFO">
             <appender-ref ref="FILE-INFO"/>
             <appender-ref ref="FILE-WARN"/>
             <appender-ref ref="FILE-ERROR"/>
-        </root>
-    </springProfile>
-
-    <springProfile name="test">
-        <include resource="console-appender.xml"/>
-
-        <root level="INFO">
-            <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>
 </configuration>
